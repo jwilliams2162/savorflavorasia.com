@@ -1,0 +1,23 @@
+
+RewriteEngine on
+#RewriteRule ^current\-specials\.html$ "http\:\/\/savorflavorasia\.com\/current\-specials" [R=301,L]
+
+RewriteBase /
+
+
+RewriteCond %{HTTP_HOST} ^savorflavorasia\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.savorflavorasia\.com$
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+RewriteRule ^(.+?)/?$ /$1.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ /$1.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.cgi -f
+RewriteRule ^(.+?)/?$ /$1.cgi [L]
+
+#RewriteRule ^(.+)\.html$ $1.php
