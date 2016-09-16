@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<title>Gallery - Savor Flavor Asia</title>
+
+<meta charset="utf-8">    
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+<meta name="description" content="Your description">
+
+<meta name="keywords" content="Your keywords">
+
+<meta name="author" content="">
+
+<!--CSS-->
+
+<link rel="stylesheet" href="css/bootstrap.css" >
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/touchTouch.css">
+
+<link rel="stylesheet" href="css/stuck.css">
+
+<link rel="stylesheet" href="fonts/font-awesome.css">
+
+<!--JS-->
+
+<script src="js/jquery.js"></script>
+
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+
+<script src="js/superfish.js"></script>
+
+<script src="js/jquery.easing.1.3.js"></script>
+
+<script src="js/jquery.mobilemenu.js"></script>
+
+<script src="js/jquery.equalheights.js"></script> 
+
+<script src="js/jquery.ui.totop.js"></script>
+
+<script src="js/jquery.isotope.min.js"></script>
+
+<script src="js/touchTouch.jquery.js"></script>
+
+<script src="js/tmstickup.js"></script>
+
+<script>
+
+   $(window).load(function() {
+
+     // Initialize the gallery
+
+    $('.thumb-pad6 figure a').touchTouch();
+
+  });
+
+</script>
+
+<script>	
+
+    $(window).load( function(){	
+
+        
+
+        //isotope
+
+        var $container = $('#container');
+
+            //Run to initialise column sizes
+
+            updateSize();
+
+        
+
+            //Load masonry when images all loaded
+
+            $container.imagesLoaded( function(){
+
+        
+
+                $container.isotope({
+
+                    // options
+
+                    itemSelector : '.element',	
+
+                    layoutMode : 'masonry',
+
+                    transformsEnabled: true,
+
+                    columnWidth: function( containerWidth ) {
+
+                        containerWidth = $browserWidth;
+
+                        return Math.floor(containerWidth / $cols);
+
+                      }
+
+                });
+
+            });
+
+            
+
+        	    // update columnWidth on window resize
+
+            $(window).smartresize(function(){  
+
+                updateSize();
+
+                $container.isotope( 'reLayout' );
+
+            });
+
+        	
+
+            //Set item size
+
+            function updateSize() {
+
+                $browserWidth = $container.width();
+
+                $cols = 4;
+
+        
+
+                if ($browserWidth >= 1170) {
+
+                    $cols = 4;
+
+                }
+
+                else if ($browserWidth >= 767 && $browserWidth < 1170) {
+
+                    $cols = 3;
+
+                }
+
+                else if ($browserWidth >= 480 && $browserWidth < 767) {
+
+                    $cols = 2;
+
+                }
+
+                else if ($browserWidth >= 220 && $browserWidth < 480) {
+
+                    $cols = 1;
+
+                }
+
+                //console.log("Browser width is:" + $browserWidth);
+
+                //console.log("Cols is:" + $cols);
+
+        
+
+                // $gutterTotal = $cols * 20;
+
+        		$browserWidth = $browserWidth; // - $gutterTotal;
+
+                $itemWidth = $browserWidth / $cols;
+
+                $itemWidth = Math.floor($itemWidth);
+
+        
+
+                $(".element").each(function(index){
+
+                    $(this).css({"width":$itemWidth+"px"});             
+
+                });
+
+        			
+
+        
+
+            
+
+        	  var $optionSets = $('#options .option-set'),
+
+        	      $optionLinks = $optionSets.find('a');
+
+        
+
+        	  $optionLinks.click(function(){
+
+        	    var $this = $(this);
+
+        	    // don't proceed if already selected
+
+        	    if ( $this.hasClass('selected') ) {
+
+        	      return false;
+
+        	    }
+
+        	    var $optionSet = $this.parents('.option-set');
+
+        	    $optionSet.find('.selected').removeClass('selected');
+
+        	    $this.addClass('selected');
+
+        
+
+        	    // make option object dynamically, i.e. { filter: '.my-filter-class' }
+
+        	    var options = {},
+
+        	        key = $optionSet.attr('data-option-key'),
+
+        	        value = $this.attr('data-option-value');
+
+        	    // parse 'false' as false boolean
+
+        	    value = value === 'false' ? false : value;
+
+        	    options[ key ] = value;
+
+        	    if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
+
+        	      // changes in layout modes need extra logic
+
+        	      changeLayoutMode( $this, options )
+
+        	    } else {
+
+        	      // otherwise, apply new options
+
+        	      $container.isotope( options );
+
+        	    }
+
+        	    
+
+        	    return false;
+
+        	  });		
+
+        
+
+            };
+
+    });
+
+</script> 
+
+<!--[if lt IE 9]>
+
+    <div style='text-align:center'><a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div>  
+
+  <![endif]-->
+
+
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+  <!--[if lt IE 9]>
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+
+  <![endif]-->
+
+</head>
+
+<body>
+
+<!--header-->
+
+<header id="stuck_container">
+
+    <div class="container">
+
+        <h1 class="navbar-brand navbar-brand_"><a href="index.html"><img src="img/SavorFlavorClearBackground201x118.png" alt="Savor Flavor Asia"></a></h1>
+
+        <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
+            <ul class="nav sf-menu clearfix">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li class="sub-menu"><a href="">About Us</a><span></span>
+                    <ul class="submenu">
+        				<li><a href="about-us.html">About Us</a></li>
+        				<li><a href="location.html">Location</a></li>
+                        <li class="tr"></li>
+        			</ul>
+                </li>
+                <li class="sub-menu"><a href="">Menu</a><span></span>
+					<ul class="submenu">
+						<li><a href="menu.html">Menu</a></li>
+						<li><a href="current-specials.html">Current Specials</a></li>
+					</ul>
+				</li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li class="sub-menu"><a href="">Contact Us</a><span></span>
+			<ul class="submenu">
+				<li><a href="contact-us.html">Contact Us</a></li>
+				<li><a href="careers.html">Careers</a></li>
+			</ul>
+		</li>
+            </ul>
+        </nav>
+    </div>
+
+</header>
+
+<div class="global indent">
+
+    <!--content-->
+
+    <div class="izotopeBox indent">
+
+        <div class="container">
+
+            <div id="options" class="clearfix">
+
+              <!--<ul id="filters" class="pagination option-set clearfix" data-option-key="filter">
+
+                    <li><a href="#filter" data-option-value="*" class="selected">Salads</a></li>
+
+                    <li><a href="#filter" data-option-value=".first_category">Soups</a></li>
+
+                    <li><a href="#filter" data-option-value=".second_category">Appetizers</a></li>
+
+                    <li><a href="#filter" data-option-value=".third_category">Beverages</a></li>
+
+                    <li><a href="#filter" data-option-value=".fourth_category">Desserts</a></li>
+
+                    <li><a href="#filter" data-option-value=".fifth_category">Lunch Specials</a></li>
+
+                    <li><a href="#filter" data-option-value=".sixth_category">Drinks</a></li>
+
+                    <li class="tr"><em></em></li>
+
+              </ul>-->
+
+            </div>
+
+            <div class="izotope-box">
+
+                <div id="container" class="clearfix">
+
+                    <div class="element transition first_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Asian Shrimp with Black Bean Sauce5 -1920- best.jpg">
+
+                                        <i><strong>Asian Shrimp with Black Bean Sauce</strong></i>
+
+                                        <img src="img/asian-shrimp270x180.jpg" alt="Asian Shrimp With Black Bean Sauce">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition second_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Brocoli Tofu Garlic Sauce- BEST WIDE -1920.jpg">
+
+                                        <i><strong>Broccoli Tofu with Garlic Sauce</strong></i>
+
+                                        <img src="img/broccoli-tofu270x180.jpg" alt="Broccoli with Garlic and Tofu">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition third_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Crab Puffs  -TIGHT CORRECTED NO CROP-1920.jpg">
+
+                                        <i><strong>Crab Puffs</strong></i>
+
+                                        <img src="img/crab-puff270x180.jpg" alt="Cream Cheese Crab Puffs">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition fourth_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Katsu Don Chicken- TIGHT 3 -1920.jpg">
+
+                                        <i><strong>Katsu Don Chicken</strong></i>
+
+                                        <img src="img/katsu-don-chicken270x180.jpg" alt="Katsu Don Chicken">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition first_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Lettuce Wraps -WIDE CORRECTED NO CROP-1920.jpg">
+
+                                        <i><strong>Lettuce Wraps</strong></i>
+
+                                        <img src="img/chicken-lettuce-wrap270x180.jpg" alt="Chicken lettuce wraps appetizer">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition second_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Mongilian Beef- Oct-14  Wide- BEST-1920.jpg">
+
+                                        <i><strong>Mongolian Beef</strong></i>
+
+                                        <img src="img/mongolian-beef270x180.jpg" alt="mongolian beef">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition third_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Pad Thai Wide- Corrected 1920.jpg">
+
+                                        <i><strong>Pad Thai</strong></i>
+
+                                        <img src="img/pad-thai270x180.jpg" alt="pad thai">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition fourth_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Shrimp with Lobster Sauce -WIDE CORRECTED NO CROP-2-1920.jpg">
+
+                                        <i><strong>Shrimp with Lobster Sauce</strong></i>
+
+                                        <img src="img/shrimp-lobster-sauce270x180.jpg" alt="shrimp with lobster sauce">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition first_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Spicy Korean Noodle Soup -WIDE CORRECTED NO CROP-1920.jpg">
+
+                                        <i><strong>Spicy Korean Noodle Soup</strong></i>
+
+                                        <img src="img/spicy-korean-noodle-soup270x180.jpg" alt="spicy korean noodle soup">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition second_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Spicy Korean Pork TIGHT-1920.jpg">
+
+                                        <i><strong>Spicy Korean Pork</strong></i>
+
+                                        <img src="img/spicy-korean-pork270x180.jpg" alt="spicy korean pork">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition third_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Thai Basil BEEF- Wide CORRECTED 1920.jpg">
+
+                                        <i><strong>Thai Basil Beef</strong></i>
+
+                                        <img src="img/thai-basil-beef270x180.jpg" alt="thai basil beef">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition fourth_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Thai Basil Fried Rice TIGHT CORRECTED-1920.jpg">
+
+                                        <i><strong>Thai Basil Fried Rice</strong></i>
+
+                                        <img src="img/thai-basil-fried-rice270x180.jpg" alt="thai basil fried rice">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+					<div class="element transition first_category" data-category="transition">
+
+						<div class="thumb-pad6">
+
+							<div class="thumbnail">
+
+								<figure>
+
+									<a href="img/Wor Wonton Soup- TIGHT CORRECTED-1920.jpg" >
+
+										<i><strong>Wor Wonton soup</strong></i>
+
+										<img src="img/wor-wonton-soup270x180.jpg" alt="wor wonton soup">
+
+									</a>
+
+								</figure>
+
+							</div>
+
+						</div>
+
+					</div>
+
+                    <div class="element transition second_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Chilli  Garlic-Edamame- TGIHT.JPG">
+
+                                        <i><strong>Chili Garlic Edamame</strong></i>
+
+                                        <img src="img/chili-garlic-edamame270x180.jpg" alt="chili garlic edamame">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition third_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    <a href="img/Orange Chicken -WIDE CORRECTED -1920.jpg">
+
+                                        <i><strong>Orange Chicken</strong></i>
+
+                                        <img src="img/orange-chicken270x180.jpg" alt="orange chicken">
+
+                                    </a>
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="element transition fourth_category" data-category="transition">
+
+                        <div class="thumb-pad6">
+
+                            <div class="thumbnail">
+
+                                <figure>
+
+                                    &nbsp;
+
+                                </figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> 
+
+<!--footer-->
+
+<footer class="indent">
+
+    <div class="container">
+
+        <hr>
+
+        <ul class="clearfix">
+
+            <li><a href="https://www.facebook.com/pages/Savor-Flavor-Asia/176423749069868?ref=hl"><img src="img/icon_facebook200x60.png" alt="facebook"/></a></li>
+
+            <!--<li><a href="#">twitter</a></li>-->
+
+            <li><a href="https://plus.google.com/113171396282732140733/about?hl=en"><img src="img/icon_google_plus200x61.png" alt="google plus" /></a></li>
+
+        </ul>
+
+        <p>Savor Flavor Asia &copy; <em id="copyright-year"></em> <span></span><br> <a href="privacy.html">Privacy policy</a> <span></span><br>4905 E. Ray Rd. #102 &nbsp;Ahwatukee, Arizona 85044</p>
+
+    </div>
+
+ </footer>
+
+<script src="js/bootstrap.min.js"></script>
+
+<script src="js/tm-scripts.js"></script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59416632-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<!-- Google Code for Remarketing Tag -->
+<!--------------------------------------------------
+Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+--------------------------------------------------->
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 965524583;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/965524583/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+</noscript>
+
+</body>
+
+</html>
